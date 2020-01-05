@@ -6,7 +6,8 @@
 ### Telepítés
 - A letöltött forrás tartalmát másoljuk egy tetszőleges mappába a `resources`-en belül.  
 - Egészítsük ki a resource `meta.xml` fájlját a forrásban lévő meta.xml-el.  
-- Töltsük le a következő repót: [ URL ], és kövessük az ott leírtakat
+- Töltsük le a következő repót: [mta-mysql](https://github.com/sanyisasha/mta-mysql), és kövessük az ott leírtakat
+- `refresh` majd `start mta-database`
 
 ### Leírások
 - [Class](https://github.com/sanyisasha/mta-database/blob/master/CLASS.md)
