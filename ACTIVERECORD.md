@@ -69,7 +69,6 @@ newRow = newRow:save() -- Beszúrja adatbázisba a megadott értékekkel, majd v
 ```
   
 Mentésnél csak azokat az adatokat menti, amiknél változás történt.  
-Transformit is figyeli, bár nem 100%-os pontosággal, mivel nagyon sok tizedes jegyig figyeli.  
 Ha figyelmen kívül akarjuk hagyni ezt a változás figyelést, esetleg minden adatot menteni akarunk, vagy az updated_at részt akarjuk frissíteni akkor megadhatjuk a save metódusnak a force paramétert.  
 ```lua
 row:save(true)
