@@ -49,7 +49,7 @@ local q = TestTable():getQuery()
 q:where({id = {1,2,3}})
 q:orWhere({id = 4})
 
-local row = TestTable():loadByQuery(q, true) -- nil
+local row = TestTable():loadByQuery(q:all(), true) -- nil
 ```
 
 ### save(force)
