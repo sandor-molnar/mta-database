@@ -132,7 +132,7 @@ class "ActiveRecord" ("Object") {
         if not self.isNew and self.beforeSave then self:beforeSave() end
 
         if not force and not self.isNew and not self:getDirtyAttributes() then
-            outputDebugString(self.id..': unchanged', 2)
+            outputDebugString(self.__name__..'#'..self.id..' unchanged.', 2)
             return true
         end
         local datas = {}

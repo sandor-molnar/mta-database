@@ -26,7 +26,7 @@ class "Query" ("Object") {
 	schemaCache = {},
 	
 	handler = function(self)
-		return exports.ssh_mysql
+		return exports['mta-mysql']
 	end,
 
 	select = function(self, selects)
@@ -43,7 +43,7 @@ class "Query" ("Object") {
 
 		for i,v in pairs(values) do
 			_args = _args..'`'..i..'`, '
-			_values = _values..'"'..Database():escape(v)..'", '
+			_values = _values..'"'..self:handler():DBEscape(v)..'", '
 		end
 		
 		_values = string.sub(_values, 0, -3)
@@ -90,7 +90,7 @@ class "Query" ("Object") {
 		for key, value in pairs(_condition) do
 			if value[2] == 'AND' or value[2] == 'OR' then
 				if _where ~= ' WHERE ' then _where = _where..' '..value[2] end
-				_where = _where..' `'..value[3]..'` = "'..Database():escape(value[1])..'"'
+				_where = _where..' `'..value[3]..'` = "'..self:handler():DBEscape(value[1])..'"'
 			else
 				local _types = explode('_', value[2])
 				if _where ~= ' WHERE ' then _where = _where..' '.._types[1] end
@@ -101,7 +101,7 @@ class "Query" ("Object") {
 		if _where == ' WHERE ' then _where = ' WHERE 1=1 ' end
 
 		for key, value in pairs(values) do
-			_values = _values..'`'..key..'` = "'..Database():escape(value)..'", '
+			_values = _values..'`'..key..'` = "'..self:handler():DBEscape(value)..'", '
 		end
 
 		_values = string.sub(_values, 0, -3)
@@ -140,7 +140,7 @@ class "Query" ("Object") {
 		for key, value in pairs(_condition) do
 			if value[2] == 'AND' or value[2] == 'OR' then
 				if _where ~= ' WHERE ' then _where = _where..' '..value[2] end
-				_where = _where..' `'..value[3]..'` = "'..Database():escape(value[1])..'"'
+				_where = _where..' `'..value[3]..'` = "'..self:handler():DBEscape(value[1])..'"'
 			else
 				local _types = explode('_', value[2])
 				if _where ~= ' WHERE ' then _where = _where..' '.._types[1] end

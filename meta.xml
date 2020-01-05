@@ -3,7 +3,6 @@
     <script src="utils/Class.class.lua" type="shared" version="1.0" />
 	<script src="utils/Object.class.lua" type="shared" version="0.0.1" />
 
-    <script src="database/Database.class.lua" type="server" />
 	<script src="database/SelectQuery.class.lua" type="server" />
 	<script src="database/Query.class.lua" type="server" />
 	<script src="database/ActiveRecord.class.lua" type="server" />

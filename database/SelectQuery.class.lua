@@ -44,7 +44,7 @@ class "SelectQuery" ("Object") {
 	end,
 
 	handler = function(self)
-		return exports.ssh_mysql
+		return exports['mta-mysql']
 	end,
 
 	limit = function(self, value)
@@ -140,7 +140,7 @@ class "SelectQuery" ("Object") {
 		for key, values in pairs(self._where) do
 			if values[2] == 'AND' or values[2] == 'OR' then
 				if whereSql ~= '' then whereSql = whereSql..' '..values[2] end
-				whereSql = whereSql..' `'..values[3]..'` = "'..Database():escape(values[1])..'"'
+				whereSql = whereSql..' `'..values[3]..'` = "'..self:handler():DBEscape(values[1])..'"'
 			else
 				local _types = explode('_', values[2])
 				if whereSql ~= '' then whereSql = whereSql..' '.._types[1] end
