@@ -1,14 +1,15 @@
 <meta>
     <info author="SaSha" />
-    <script src="Class.class.lua" type="shared" version="1.0" />
-	<script src="Object.class.lua" type="shared" version="0.0.1" />
+    <script src="utils/Class.class.lua" type="shared" version="1.0" />
+	<script src="utils/Object.class.lua" type="shared" version="0.0.1" />
 
-    <script src="Database.class.lua" type="server" />
-	<script src="SelectQuery.class.lua" type="server" />
-	<script src="Query.class.lua" type="server" />
-	<script src="ActiveRecord.class.lua" type="server" />
+    <script src="database/Database.class.lua" type="server" />
+	<script src="database/SelectQuery.class.lua" type="server" />
+	<script src="database/Query.class.lua" type="server" />
+	<script src="database/ActiveRecord.class.lua" type="server" />
     <min_mta_version client="1.5.6" server="1.5.6" />
-
     
+	<script src="Test.class.lua" type="server" />
 	<script src="example.s.lua" type="server" />
+
 </meta>

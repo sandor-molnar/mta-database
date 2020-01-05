@@ -313,3 +313,35 @@ function loadClass()
 end
 
 class = loadClass()
+
+
+
+
+--- UTILS
+
+
+function array_keys(array)
+	local arr = {}
+	for i,v in pairs(array) do
+		arr[v] = i
+	end
+
+	return arr
+end
+
+function getDateTime()
+	local time = getRealTime()
+	return (1900+time.year)..'-'..(time.month+1)..'-'..time.monthday..' '..time.hour..':'..time.minute..':'..time.second
+end
+
+function explode(div,str) -- credit: http://richard.warburton.it
+	if (div=='') then return false end
+	local pos,arr = 0,{}
+	-- for each divider found
+	for st,sp in function() return string.find(str,div,pos,true) end do
+	  table.insert(arr,string.sub(str,pos,st-1)) -- Attach chars left of current divider
+	  pos = sp + 1 -- Jump past current divider
+	end
+	table.insert(arr,string.sub(str,pos)) -- Attach chars right of last divider
+	return arr
+  end

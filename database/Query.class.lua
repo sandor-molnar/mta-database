@@ -1,3 +1,24 @@
+--[[
+                                       _ 
+                                      | |
+  _ __   _____      _____ _ __ ___  __| |
+ | '_ \ / _ \ \ /\ / / _ \ '__/ _ \/ _` |
+ | |_) | (_) \ V  V /  __/ | |  __/ (_| |
+ | .__/ \___/ \_/\_/ \___|_|  \___|\__,_|
+ | |                                                                              
+ | |__  _   _   
+ | '_ \| | | |  https://github.com/sanyisasha
+ | |_) | |_| |  @Author SaSha <Molnár Sándor>
+ |_.__/ \__, |
+     _____/  /   _____  _           
+    / ______/   / _____| |          
+   | (___   __ _| (___ | |__   __ _ 
+    \___ \ / _` |\___ \| '_ \ / _` |
+    ____) | (_| |____) | | | | (_| |
+   |_____/ \__,_|_____/|_| |_|\__,_|
+]]
+
+
 class "Query" ("Object") {
 	SORT_DESC = 1,
 	SORT_ASC = 2,
@@ -7,21 +28,11 @@ class "Query" ("Object") {
 	handler = function(self)
 		return exports.ssh_mysql
 	end,
-	--[[
-		local q = Query():select()
-		q:where({username = 'test'})
-		q:one()
-	]]
+
 	select = function(self, selects)
 		return SelectQuery(selects)
 	end,
 
-	--[[
-		Query():insert('users', {
-			username = 'test',
-			password = 'test2'
-		})
-	]]
 	insert = function(self, _table, values)
 		assert(values, '[Query] values can\'t be blank.')
 
@@ -43,8 +54,6 @@ class "Query" ("Object") {
 
 		sql = sql.._args.._values
 
-		outputDebugString(sql)
-		outputConsole(sql)
 		return self:handler():DBPollQuery(sql)
 	end,
 
@@ -99,8 +108,6 @@ class "Query" ("Object") {
 
 		sql = sql.._values.._where
 
-		outputDebugString(sql)
-		outputConsole(sql)
 		return self:handler():DBExec(sql)
 	end,
 
@@ -143,8 +150,6 @@ class "Query" ("Object") {
 
 		sql = sql.._where
 
-		outputDebugString(sql)
-		outputConsole(sql)
 		return self:handler():DBExec(sql)
 
 	end,

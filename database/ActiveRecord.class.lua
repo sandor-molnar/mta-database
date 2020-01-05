@@ -1,10 +1,29 @@
+--[[
+                                       _ 
+                                      | |
+  _ __   _____      _____ _ __ ___  __| |
+ | '_ \ / _ \ \ /\ / / _ \ '__/ _ \/ _` |
+ | |_) | (_) \ V  V /  __/ | |  __/ (_| |
+ | .__/ \___/ \_/\_/ \___|_|  \___|\__,_|
+ | |                                                                              
+ | |__  _   _   
+ | '_ \| | | |  https://github.com/sanyisasha
+ | |_) | |_| |  @Author SaSha <Molnár Sándor>
+ |_.__/ \__, |
+     _____/  /   _____  _           
+    / ______/   / _____| |          
+   | (___   __ _| (___ | |__   __ _ 
+    \___ \ / _` |\___ \| '_ \ / _` |
+    ____) | (_| |____) | | | | (_| |
+   |_____/ \__,_|_____/|_| |_|\__,_|
+]]
+
+
 class "ActiveRecord" ("Object") {
     table = '',
     attributes = {},
     attributeKeys = {},
     originalAttributes = {},
-
-    transforms = {},
 
     primaryKey = 'id',
 
@@ -30,37 +49,17 @@ class "ActiveRecord" ("Object") {
 
     setOriginalAttributes = function(self)
         for i,v in pairs(self.attributes) do
-            local _v = self[v]
-            if self.transforms[v] then
-                _v = Transform()
-                if self.transforms[v] ~= true then
-                    _v:fromElement(self[self.transforms[v]])
-                else
-                    _v:load(self[v]:getTable())
-                end
-            end
-            self.originalAttributes[v] = _v
+            self.originalAttributes[v] = self[v]
         end
     end,
 
     getDirtyAttributes = function(self)
         local dirty = nil
         for i,v in pairs(self.attributes) do
-            if self.transforms[v] then
-                if self.transforms[v] ~= true then
-                    self[v]:fromElement(self[self.transforms[v]])
-                end
-                if not self.originalAttributes[v]:isEqual(self[v]) then
-                    if not dirty then dirty = {} end
-                    dirty[v] = true
-                end
-            else
-                if self[v] ~= self.originalAttributes[v] then
-                    if not dirty then dirty = {} end
-                    dirty[v] = true
-                end
+            if self[v] ~= self.originalAttributes[v] then
+                if not dirty then dirty = {} end
+                dirty[v] = true
             end
-           
         end
 
         return dirty
@@ -71,10 +70,6 @@ class "ActiveRecord" ("Object") {
         if datas then
             for i,v in pairs(datas) do
                 if not v then v = '' end
-                if self.transforms[i] then
-                    v = Transform()
-                    v:fromJson(datas[i])
-                end
                 self[i] = v
                 table.insert(self.attributes, i)
             end
@@ -143,15 +138,7 @@ class "ActiveRecord" ("Object") {
         local datas = {}
         for i,v in pairs((self.isNew or force) and self.attributeKeys or self:getDirtyAttributes()) do
             if self[i] then
-                if self.transforms[i] then
-                    if type(self[i]) == 'table' then
-                        datas[i] = self[i]:toJson()
-                    else
-                        datas[i] = self[i]
-                    end
-                else
-                    datas[i] = self[i]
-                end
+                datas[i] = self[i]
             end
         end
 
