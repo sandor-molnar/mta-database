@@ -19,3 +19,5 @@ Segítségével könnyedén tudjuk másolgatni a resource-öket.
 - [Class](https://github.com/sanyisasha/mta-database/blob/master/CLASS.md)
 - [Database és Query](https://github.com/sanyisasha/mta-database/blob/master/DATABASE.md)
 - [ActiveRecord](https://github.com/sanyisasha/mta-database/blob/master/ACTIVERECORD.md)
+
+**Kérdés esetén megtaláltok a *molnar.sandor.benjamin@gmail.com* e-mail címen**
