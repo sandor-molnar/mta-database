@@ -131,6 +131,9 @@ TestTable.__class = TestTable -- Ez mindig legyen itt.
 ### beforeSave()
 Akkor hívódik meg, amikor az adatbázis sor mentve van. Ez alol kivétel ha új sor, mert akkor betöltéskor hívodik csak meg.
 
+### afterSave()
+Hasonló az `afterInsert` és az `afterUpdate` behaviorokhoz, viszont ez új és meglévőnél is lefut mentéskor.
+
 ### beforeDelete()
 Törlés előtt (delete metódus) fut let
 
@@ -149,6 +152,4 @@ Már létező model mentése előtt fut le. (Konkrétan az SQL futtatás előtt)
 ### afterInsert()
 `beforeInsert` és SQL futtatás után fut le közvetlen.
 
-### afterSave()
-Hasonló az `afterInsert` és az `afterUpdate` behaviorokhoz, viszont ez új és meglévőnél is lefut mentéskor.
 
