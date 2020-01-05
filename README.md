@@ -9,7 +9,6 @@
 - Töltsük le a következő repót: [ URL ], és kövessük az ott leírtakat
 
 ### Leírások
-- (Class)[https://github.com/sanyisasha/mta-database/blob/master/CLASS.md]
-- (Database és Query)[https://github.com/sanyisasha/mta-database/blob/master/DATABASE.md]
-- (ActiveRecord)[https://github.com/sanyisasha/mta-database/blob/master/ACTIVERECORD.md]
-
+- [Class](https://github.com/sanyisasha/mta-database/blob/master/CLASS.md)
+- [Database és Query](https://github.com/sanyisasha/mta-database/blob/master/DATABASE.md)
+- [ActiveRecord](https://github.com/sanyisasha/mta-database/blob/master/ACTIVERECORD.md)
